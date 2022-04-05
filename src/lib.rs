@@ -1,4 +1,4 @@
-pub fn merge_sort<T: Copy + Ord>(arr: Vec<T>) -> Vec<T> {
+pub fn merge_sort<T: Copy + PartialOrd>(arr: Vec<T>) -> Vec<T> {
     let len = arr.len();
     let mut sorted = arr;
     sort(&mut sorted, 0, len - 1);
@@ -6,12 +6,12 @@ pub fn merge_sort<T: Copy + Ord>(arr: Vec<T>) -> Vec<T> {
     sorted
 }
 
-pub fn merge_sort_inplace<T: Copy + Ord>(arr: &mut Vec<T>) {
+pub fn merge_sort_inplace<T: Copy + PartialOrd>(arr: &mut Vec<T>) {
     let len = arr.len();
     sort(arr, 0, len - 1);
 }
 
-fn sort<T: Copy + Ord>(arr: &mut Vec<T>, left: usize, right: usize) {
+fn sort<T: Copy + PartialOrd>(arr: &mut Vec<T>, left: usize, right: usize) {
     if left < right {
         let middle = left + (right - left) / 2;
 
@@ -22,7 +22,7 @@ fn sort<T: Copy + Ord>(arr: &mut Vec<T>, left: usize, right: usize) {
     }
 }
 
-fn merge<T: Copy + Ord>(arr: &mut Vec<T>, left: usize, middle: usize, right: usize) {
+fn merge<T: Copy + PartialOrd>(arr: &mut Vec<T>, left: usize, middle: usize, right: usize) {
     let size_1 = middle - left + 1;
     let size_2 = right - middle;
 
